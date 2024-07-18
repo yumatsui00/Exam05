@@ -2,6 +2,10 @@
 # define WARLOCK_HPP
 
 #include <iostream>
+#include <map>
+
+#include "Dummy.hpp"
+#include "Fwoosh.hpp"
 
 class Warlock {
 private:
@@ -10,6 +14,7 @@ private:
 	Warlock &operator=( Warlock const& rhs );
 	std::string _name;
 	std::string _title;
+	std::map<std::string, ASpell*> _SpellBook;
 public:
 	Warlock( std::string, std::string );
 	~Warlock( void );
@@ -17,6 +22,9 @@ public:
 	std::string const& getTitle( void ) const;
 	void	introduce( void ) const;
 	void	setTitle( std::string const& title );
+	void	learnSpell( ASpell* spell );
+	void	forgetSpell( std::string SpellName );
+	void	launchSpell( std::string spellName, ATarget const& target );
 } ;
 
 #endif

@@ -11,7 +11,7 @@ private:
 	std::string _name;
 	std::string _title;
 public:
-	Warlock( std::string, std::string );
+	Warlock( std::string name, std::string title );
 	~Warlock( void );
 	std::string const& getName( void ) const;
 	std::string const& getTitle( void ) const;

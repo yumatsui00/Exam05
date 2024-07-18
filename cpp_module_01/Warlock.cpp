@@ -35,3 +35,21 @@ void	Warlock::introduce( void ) const {
 void	Warlock::setTitle( std::string const& title ) {
 	_title = title;
 } ;
+
+
+void	Warlock::learnSpell( ASpell* spell ) {
+	if (spell) {
+		if (_SpellBook.find(spell->getName()) == _SpellBook.end())
+			_SpellBook[spell->getName()] = spell->clone();
+	}//find メソッドは、要素がなかったらend()のイテレータを返す
+} ;
+
+void	Warlock::forgetSpell( std::string SpellName ) {
+	if (_SpellBook.find(SpellName) != _SpellBook.end())
+		_SpellBook.erase(_SpellBook.find(SpellName));
+} ;
+
+void	Warlock::launchSpell( std::string spellName, ATarget const& target ) {
+	if (_SpellBook.find(spellName) != _SpellBook.end())
+		_SpellBook[spellName]->launch(target);
+} ;
